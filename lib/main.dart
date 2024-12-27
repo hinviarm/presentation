@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flame/camera.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
@@ -277,7 +279,7 @@ class MyGame extends FlameGame
   void onTapDown(TapDownInfo info) {
     super.onTapDown(info);
     _isDragged = false;
-    camera.follow(user);
+    camera.follow(user, maxSpeed: 0.2);
   }
 
   @override
@@ -299,7 +301,7 @@ class MyGame extends FlameGame
       }
     }
 
-    camera.follow(user);
+    camera.follow(user, maxSpeed: 0.2);
 
     super.onLoad();
     initTts();
@@ -383,7 +385,7 @@ class MyGame extends FlameGame
         }
         if(avance == 10 || avance == -10){
           camera.viewfinder.angle += pi;
-          user.angle += pi;
+          user.angle = lerpDouble(user.angle, user.angle+pi, 0.1)!;
         }
       } else if (vectTmp.y < user.y) {
         lecture("Vous allez dans la direction opposée");

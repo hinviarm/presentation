@@ -43,6 +43,7 @@ dependencies:
   dart_numerics: ^0.0.6
   flutter_tts: ^4.0.2
   flame_tiled: ^1.14.1
+  win32: 3.0.0
 
 
 dev_dependencies:
